@@ -1,0 +1,8 @@
+{
+    "usingComponents": {},
+    "navigationBarTitleText": "白白账本",
+    "navigationBarBackgroundColor": "#653BB7",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "dark",
+    "navigationStyle": "custom"
+  }

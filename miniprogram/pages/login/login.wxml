@@ -1,0 +1,8 @@
+<!--login.wxml-->
+<view class="container">
+<view class="flex-center">
+  <image class="logo-img" src="../../images/logo1-1.png"></image>
+</view>
+
+  <button class="login-btn" bindtap="login">登录</button>
+</view>

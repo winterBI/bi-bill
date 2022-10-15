@@ -1,0 +1,11 @@
+/**index.wxss**/
+.login-btn {
+    position: fixed;
+    top: 65%;
+    color: #ffffff;
+    background-color: #653BB7;
+  }
+  .logo-img {
+    height: 254rpx;
+    width: 700rpx;
+  }

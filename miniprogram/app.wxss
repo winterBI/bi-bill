@@ -1,0 +1,76 @@
+/**app.wxss**/
+page{
+    font-size: 30rpx;
+  }
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+  } 
+  .no-data {
+    padding: 40rpx 0;
+    color: #aaaaaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .flex-center-start {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  } 
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flex-column {
+    flex-direction: column;
+  }
+  
+  .border-buttom-ccc {
+    border-bottom: 1rpx solid #ccc;
+  }
+  
+  .border-buttom-eee {
+    border-bottom: 1rpx solid #eee;
+  } 
+  
+  .empty-line {
+    width: 100%;
+    height: 30rpx;
+    background-color: #eee;
+  }
+  .title-color {
+    color: #aaaaaa;
+    font-size: 30rpx;
+  }
+  .ellipsis-1 {
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+  .ellipsis-2{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;/*设置方向*/
+    -webkit-line-clamp:2;/*设置超过为省略号的行数*/
+    overflow:hidden;
+  }
