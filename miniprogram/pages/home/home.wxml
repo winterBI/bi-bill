@@ -1,4 +1,62 @@
 <!--pages/home/home.wxml-->
 <view>
-  
+    <view class="header"></view>
+    <block wx:if="{{billData.year}}">
+        <view class="wrapper">
+            <view class="home-header flex-between">
+                <view class="income-wrapper flex-1">
+                    <view>收入</view>
+                    <view class="bigger-font-size">{{billData.total_income || 0}}</view>
+                </view>
+                <view class="pay-wrapper flex-1">
+                    <view>支出</view>
+                    <view class="bigger-font-size">{{billData.total_pay || 0}}</view>
+                </view>
+                <view class="date-wrapper">
+                    <picker mode="date" fields="month" bindchange="selectDate">
+                        <view class="date-year">{{billData.year}}年</view>
+                        <view class="date-month bigger-font-size flex-center">
+                            <text>{{billData.month}}月</text>
+                            <image class="date-img" src="../../images/down.png"></image>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <!-- 数据 -->
+            <block wx:if="{{billData.data && billData.data.length > 0}}">
+                <block wx:for="{{billData.data}}" wx:key="index">
+                    <view class="home-data">
+                        <view class="data-title flex-between">
+                            <view class="title-left">
+                                {{item.month}}月{{item.day}}日 {{item.week}}
+                            </view>
+                            <view class="title-right flex-center">
+                                <view wx:if="{{item.income !== 0}}" class="data-total-income">收入: {{item.income}} </view>
+                                <view wx:if="{{item.pay !== 0}}" class="data-total-pay">支出: {{item.pay}}</view>
+                            </view>
+                        </view>
+                        <block wx:for="{{item.item}}" wx:for-index="subIndex" wx:for-item="subItem" wx:key="subIndex">
+                            <view class="data-item flex" data-item="{{item}}" data-sub_item="{{subItem}}" bindtap="goDetail">
+                                <view class="item-icon flex-center">
+                                    <image class="item-icon-img" src="{{subItem.category.select_icon}}"></image>
+                                </view>
+                                <view class="item-detail flex-between flex-1 {{subIndex == (item.item.length -1) ? 'no-b-border': ''}}">
+                                    <view>{{subItem.description}}</view>
+                                    <view class="item-amount {{subItem.type == 2 ? 'item-income' : ''}}">{{subItem.type == 1 ? '-': '+'}}{{subItem.amount}}</view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="no-data flex-center">暂时没有数据，立即去添加吧~</view>
+            </block>
+        </view>
+    </block>
+
+    <!-- 添加账单 -->
+    <view class="add-wrapper flex-center" bindtap="addBill">
+        <image class="add-img" src="../../images/add.png"></image>
+    </view>
 </view>

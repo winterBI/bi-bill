@@ -1,77 +1,101 @@
 /* pages/home/home.wxss */
-/* pages/home/home.wxss */
 
+.wrapper {
+    padding-top: 160rpx;
+}
 /* 头部统计部分 */
 .home-header {
     background-color: #653BB7;
     font-size: 30rpx;
     color: #aaaaaa;
-    padding: 40rpx 20rpx;
-  }
-  .bigger-font-size {
+    padding: 0 20rpx;
+    width: 100%;
+    height: 160rpx;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.bigger-font-size {
     font-size: 40rpx;
     color: #ffffff;
     margin-top: 10rpx;
-  }
-   .date-year {
+}
+
+.date-year {
     padding-left: 30rpx;
-  }
-  .date-month {
+}
+
+.date-month {
     padding-left: 30rpx;
     border-left: 2px solid #aaaaaa;
-  }
-  .date-img{
+}
+
+.date-img {
     width: 40rpx;
     height: 40rpx;
-  }
-  /* 数据 */
-  .home-data {
+}
+
+/* 数据 */
+.home-data {
     font-size: 30rpx;
     color: #aaaaaa;
-  }
-  .data-title {
+}
+
+.data-title {
     padding: 20rpx 0;
     border-bottom: 1px solid #ccc;
-  }
-  .title-left {
+}
+
+.title-left {
     padding-left: 20rpx
-  }
-  .title-right {
+}
+
+.title-right {
     padding-right: 20rpx
-  }
-  .data-total-income {
+}
+
+.data-total-income {
     padding-right: 60rpx;
-  }
-  .data-item {
+}
+
+.data-item {
     padding: 20rpx 0 20rpx 20rpx;
-  }
-  .item-icon {
+}
+
+.item-icon {
     margin-right: 40rpx;
     padding: 20rpx;
-    border-radius: 100rpx ;
+    border-radius: 100rpx;
     background: #eeeeee;
-  }
-  .item-icon-img {
+}
+
+.item-icon-img {
     width: 50rpx;
     height: 50rpx;
-  }
-  .item-detail {
+}
+
+.item-detail {
     font-size: 34rpx;
     color: #000000;
     border-bottom: 1px solid #eeeeee;
-  }
-  .item-amount {
+}
+
+.item-amount {
     padding-right: 20rpx;
-  }
-  .item-income {
+}
+
+.item-income {
     color: #e8ba5a;
-  }
-  .no-b-border {
+}
+
+.no-b-border {
     border-bottom: none;
-  }
-  
-  /* 添加按钮 */
-  .add-wrapper {
+}
+
+/* 添加按钮 */
+.add-wrapper {
     position: fixed;
     right: 10rpx;
     top: 60%;
@@ -80,8 +104,9 @@
     height: 130rpx;
     background: rgba(101, 59, 183, 0.5);
     box-shadow: 0px 0px 15px rgba(101, 59, 183, 0.8);
-  }
-  .add-img {
+}
+
+.add-img {
     width: 100rpx;
     height: 100rpx;
-  }
+}

@@ -1,0 +1,27 @@
+/* pages/suggestList/suggestList.wxss */
+.no-list {
+    height: 100rpx;
+    margin: 20rpx;
+    border: 1rpx dashed #333;
+    border-radius: 20rpx;
+    color: #333;
+    font-size: 80rpx;
+  }
+  .list-wrapper {
+    font-size: 30rpx;
+  }
+  .content-wrapper {
+    margin: 20rpx;
+    border: 1rpx solid #eee;
+    border-radius: 20rpx;
+    padding: 10rpx;
+    box-shadow: 5rpx 5rpx 5rpx #eee;
+  }
+  .title-wapper {
+    padding: 20rpx 0;
+  }
+  
+  .status {
+    width: 100rpx;
+    padding: 0 10rpx;
+  }

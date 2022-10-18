@@ -1,0 +1,54 @@
+<!--pages/bill/bill.wxml-->
+<view class="wrapper">
+<block wx:if="{{billData.year}}"> 
+  <view class="header">
+    <view class="header-last flex-center flex-column">
+      <view class="title">结余</view>
+      <view class="last">{{billData.total_last}}</view>
+    </view>
+    <view class="header-content flex-center">
+      <view class="header-income">
+        <text class="title">收入</text>
+        <text class="income">{{billData.total_income}}</text>
+      </view>
+      <view class="header-pay">
+        <text class="title">支出</text>
+        <text class="pay">{{billData.total_pay}}</text>
+      </view>
+    </view>
+    <!-- 选择日期 -->
+    <view class="select-year">
+      <picker mode="date" fields="year" bindchange="selectDate">
+        <view class="flex-center">
+          <text>{{billData.year}}年</text>
+          <image class="select-img" src="../../images/down.png"></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <!-- 具体数据 -->
+  <block wx:if="{{billData.data && billData.data.length > 0}}">
+    <view class="data">
+      <view class="data-item data-title flex-between">
+        <view class="flex-center flex-1">月份</view>
+        <view class="flex-center flex-1">收入</view>
+        <view class="flex-center flex-1">支出</view>
+        <view class="flex-center flex-1">结余</view>
+      </view>
+      <block wx:for="{{billData.data}}" wx:key="index">
+        <view class="data-item flex-between">
+          <view class="flex-center flex-1">{{item.month}}月</view>
+          <view class="flex-center flex-1">{{item.income}}</view>
+          <view class="flex-center flex-1">{{item.pay}}</view>
+          <view class="flex-center flex-1">{{item.last}}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="no-data">暂时没有订单~</view>
+  </block>
+
+</block>
+
+</view>

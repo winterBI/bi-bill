@@ -4,5 +4,8 @@
   <image class="logo-img" src="../../images/logo1-1.png"></image>
 </view>
 
+    <!-- <open-data type="userAvatarUrl"></open-data>
+    <open-data type="userNickName"></open-data> -->
+
   <button class="login-btn" bindtap="login">登录</button>
 </view>

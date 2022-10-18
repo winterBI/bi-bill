@@ -1,0 +1,64 @@
+.wrapper {
+    padding-top: 280rpx;
+}
+/* 头部 */
+.header {
+    padding: 30rpx 40rpx;
+    box-sizing: border-box;
+    background-color: #653BB7;
+    color: #ffffff;
+    position: relative;
+    height: 280rpx;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .header .last {
+    font-size: 50rpx;
+    margin-top: 20rpx;
+  }
+  .title {
+    font-size: 30rpx;
+    color: #aaaaaa;
+  }
+  .header-content{
+    margin-top: 40rpx;
+  }
+  .income {
+    padding-right: 50rpx;
+    border-right: 1px solid #aaaaaa;
+  }
+  .header-pay {
+    padding-left: 50rpx;
+  }
+  .header .income{
+    padding-left: 20rpx;
+  }
+  .header .pay{
+    padding-left: 20rpx;
+  }
+  .select-year {
+    position: absolute;
+    top: 30rpx;
+    right: 40rpx;
+    font-size: 30rpx;
+  }
+  .select-img {
+    width: 40rpx;
+    height: 40rpx;
+  }
+  
+  /* 数据 */
+  .data-item {
+    font-size: 30rpx;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #ddd;
+  }
+  
+  .data-title {
+    color: #aaa;
+    font-size: 30rpx;
+    border-bottom: 1rpx solid #aaa;
+  }
+  

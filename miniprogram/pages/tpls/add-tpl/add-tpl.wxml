@@ -1,0 +1,14 @@
+
+<!-- 添加类目的模版 -->
+<!-- 
+  item: object 当前的数据
+  currentItem: object 选中的数据
+ -->
+<template name="addItem">
+    <view class="content-item-tpl flex-center">
+        <view class="img-wrapper flex-center {{item.id === currentItem.id ? 'select-item-bg':''}}">
+          <image class="content-img" src="{{item.id === currentItem.id ? item.select_icon : item.icon}}"></image>
+        </view>
+        <text class="{{item.id === currentItem.id ? 'select-item-text':''}}">{{item.name}}</text>
+    </view>
+</template>

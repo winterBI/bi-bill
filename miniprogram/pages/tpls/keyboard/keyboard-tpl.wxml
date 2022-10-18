@@ -1,0 +1,43 @@
+<!-- 自定义键盘 -->
+<!-- 
+  kbAmount: number 金额
+  kbSumOrSubmit: bool 是否需要计算
+  kbRemark: string 备注
+  dateSelect: string 选择的时间
+  keywordList: [] array 关键词列表
+ -->
+<template name="keyboard">
+
+  <view class="kb-wrapper">
+  <!-- 关键词 -->
+  <view wx:if="{{keywordList.length > 0}}" class="kb-keyword flex-center-start" >
+    <block wx:for="{{keywordList}}" wx:key="item">
+      <text class="keyword-item" data-keyword="{{item}}" bindtap="selectKeyword">{{item}}</text>
+    </block>
+  </view>
+    <!-- 输入备注部分 -->
+    <view class="kb-tip flex-between">
+      <text class="kb-remark">备注:</text>
+      <input value="{{kbRemark}}" class="kb-input" type="text" placeholder="点击输入备注" 	placeholder-class="kb-input-placeholder" bindinput="markInput"/>
+      <text class="kb-amount">{{kbAmount || 0}}</text>
+    </view>
+    <!-- 键盘主体 -->
+    <view class="kb-content flex-center">
+      <block wx:for="{{['7','8','9','today','4','5','6','add','1','2','3','sub','point','0','del','submit']}}" wx:key="item">
+        <view data-key="{{item}}" class="kb-item flex-center {{(index+1)%4===0?'kb-no-right-border':''}} {{item==='submit'?'kb-complete':''}} {{item==='del'?'kb-complete-right-border':''}}" hover-class="{{item==='submit'?'kb-hover-complete':'kb-hover'}}" hover-start-time="0" hover-stay-time="50" bindtap="keyboardTap">
+          <view class="kb-item-item flex-center" wx:if="{{item==='today'}}">
+            <picker mode="date" bindchange="selectDate">{{dateSelect ?  dateSelect : '今天'}}</picker>
+          </view>
+          <view class="kb-item-item flex-center" wx:elif="{{item==='add'}}">+</view>
+          <view class="kb-item-item flex-center" wx:elif="{{item==='sub'}}">-</view>
+          <view class="kb-item-item flex-center" wx:elif="{{item==='point'}}">.</view>
+          <view class="kb-item-item flex-center" wx:elif="{{item==='del'}}">
+            <image class="kb-del flex-center" src="../../images/del.png"></image>
+          </view>
+          <view wx:elif="{{item==='submit'}}">{{kbSumOrSubmit ? '=' : '完成'}}</view>
+          <view wx:else>{{item}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template> 

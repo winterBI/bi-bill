@@ -1,0 +1,52 @@
+<!--pages/suggest/suggest.wxml-->
+<view class="suggest-wrapper">
+  <view class="title-wrapper">
+    <view class="ttile">
+      <text>标题</text>
+      <text class="title-require">*</text>
+    </view>
+    <input 
+      value="{{title}}"
+      disabled="{{param.id}}"
+      class="title-input flex-1" 
+      type="text" 
+      placeholder="请输入标题"
+      bindinput="inputTitle"/>
+  </view>
+
+  <view class="content-wrapper">
+    <view class="ttile">
+      <text>内容</text>
+      <text class="title-require">*</text>
+    </view>
+    <textarea
+      value="{{content}}"
+      disabled="{{param.id}}"
+      class="content-area"
+      name="content"
+      auto-height
+      maxlength="500"
+      placeholder="请输入详细描述"
+      bindinput="inputContent"
+    ></textarea>
+  </view>
+  <!-- 作者回复 -->
+  <view wx:if="{{param.status && param.status == 2}}" class="content-wrapper">
+    <view class="ttile">
+      <text style="color: green;">作者回复</text>
+    </view>
+    <textarea
+      value="{{param.reply}}"
+      disabled
+      class="content-area"
+      name="content"
+      auto-height
+      maxlength="-1"
+      placeholder=""
+      bindinput="inputContent"
+      style="min-height: 100rpx;"
+    ></textarea>
+  </view>
+  <view wx:if="{{!param.id}}" class="submit-btn flex-center" bindtap="submit">提交</view>
+  <view wx:else class="submit-btn flex-center" style="color: red;" bindtap="del">删除</view>
+</view>

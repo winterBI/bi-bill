@@ -1,0 +1,23 @@
+<!--pages/log/log.wxml-->
+<view>
+  <view wx:if="{{logList.length > 0}}" class="list-wrapper">
+  <block wx:for="{{logList}}" wx:key="id">
+    <view class="content-wrapper" data-item="{{item}}">
+      <view class="title-wapper flex-between border-buttom-eee">
+        <view class="title flex-1 ellipsis-1 title-color">{{item.title}}</view>
+        <view class="status flex-center">
+          <text style="color: green;">{{item.version}}</text>
+        </view>
+      </view>
+      <textarea 
+      disabled
+      value="{{item.content}}"
+      class="content"
+      auto-height
+      >
+      </textarea>
+    </view>
+  </block>
+  </view>
+  <view wx:else class="no-data flex-center">暂时没有数据~</view>
+</view>

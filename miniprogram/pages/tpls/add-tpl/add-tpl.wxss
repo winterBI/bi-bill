@@ -1,0 +1,23 @@
+/* 主体 */
+.content-item-tpl {
+  margin-top: 30rpx;
+  width: 100%;
+  flex-direction: column;
+}
+.img-wrapper {
+  width: 144rpx;
+  height: 144rpx;
+  background: #F5F6F5;
+  border-radius: 40rpx;
+  margin-bottom: 10rpx;
+}
+.content-img {
+  width: 80rpx;
+  height: 80rpx;
+}
+.select-item-bg {
+  background: rgba(101, 59, 183, 0.5);
+}
+.select-item-text {
+  color: #653BB7;
+}

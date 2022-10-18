@@ -1,0 +1,22 @@
+<!--pages/suggestList/suggestList.wxml-->
+<view>
+  <view class="no-list flex-center" bindtap="goAdd">
+    +
+  </view>
+  <view class="list-wrapper">
+  <block wx:for="{{suggestList}}" wx:key="id">
+    <view class="content-wrapper" data-item="{{item}}" bindtap="goReview">
+      <view class="title-wapper flex-between border-buttom-eee">
+        <view class="title flex-1 ellipsis-1 title-color">{{item.title}}</view>
+        <view class="status flex-center">
+          <text wx:if="{{item.status == 1}}" style="color: red;">待解决</text>
+          <text wx:if="{{item.status == 2}}" style="color: green;">已回复</text>
+        </view>
+      </view>
+      <view class="content ellipsis-2">
+        {{item.content}}
+      </view>
+    </view>
+  </block>
+  </view>
+</view>

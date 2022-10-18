@@ -1,6 +1,6 @@
 {
     "usingComponents": {},
-    "navigationBarTitleText": "账单明细",
+    "navigationBarTitleText": "年账单统计",
     "navigationBarBackgroundColor": "#653BB7",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,

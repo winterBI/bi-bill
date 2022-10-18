@@ -1,8 +1,7 @@
 {
     "usingComponents": {},
-    "navigationBarTitleText": "账单明细",
+    "navigationBarTitleText": "添加/编辑账单",
     "navigationBarBackgroundColor": "#653BB7",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
-    "backgroundTextStyle": "dark"
+    "enablePullDownRefresh": false
   }

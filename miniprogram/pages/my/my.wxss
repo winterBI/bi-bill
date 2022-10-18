@@ -1,0 +1,46 @@
+/* pages/my/my.wxss */
+.header {
+    background-color: #653BB7;
+    font-size: 30rpx;
+    color: #aaaaaa;
+    padding: 40rpx 20rpx;
+  }
+  .avatar-wrapper {
+    border-radius: 200rpx;
+    overflow: hidden;
+  }
+  .avatar {
+    width: 200rpx;
+    height: 200rpx;
+  }
+  .nickname {
+    margin-top: 30rpx;
+    font-size: 40rpx;
+    color: #fff;
+  }
+  .no-login {
+    width: 500rpx;
+    margin: 0 auto;
+    padding: 30rpx 0;
+    background: #fff;
+    border-radius: 10rpx;
+    color: #653BB7;
+    box-shadow: 5rpx 10rpx 20rpx #ccc;
+  }
+  
+
+  .my-wrapper {
+    font-size: 30rpx;
+  }
+  .my-Item {
+    height: 100rpx;
+    padding: 0 20rpx;
+  }
+  .my-item-value {
+    display: flex;
+    align-items: center;
+  }
+  .my-right {
+    width: 40rpx;
+    height: 40rpx;
+  }

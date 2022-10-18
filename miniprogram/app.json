@@ -2,13 +2,43 @@
     "pages": [
         "pages/index/index",
         "pages/home/home",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/my/my",
+        "pages/bill/bill",
+        "pages/add/add",
+        "pages/billDetail/billDetail",
+        "pages/suggest/suggest",
+        "pages/suggestList/suggestList",
+        "pages/log/log"
     ],
-    "entryPagePath": "pages/login/login",
+    "entryPagePath": "pages/home/home",
+    "tabBar": {
+        "selectedColor": "#653BB7",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "明细",
+                "iconPath": "./images/tabs/detail.png",
+                "selectedIconPath": "./images/tabs/detail@select.png"
+            },
+            {
+                "pagePath": "pages/bill/bill",
+                "text": "账单",
+                "iconPath": "./images/tabs/bill.png",
+                "selectedIconPath": "./images/tabs/bill@select.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "./images/tabs/my.png",
+                "selectedIconPath": "./images/tabs/my@select.png"
+            }
+        ]
+    },
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
+        "navigationBarTitleText": "白白账本",
         "navigationBarTextStyle": "black"
     },
     "style": "v2",

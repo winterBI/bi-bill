@@ -1,0 +1,34 @@
+/* pages/add/add.wxss */
+@import "../tpls/add-tpl/add-tpl.wxss";
+@import "../tpls/keyboard/keyboard-tpl.wxss";
+.header {
+  width: 100%;
+  padding: 30rpx 0;
+  background-color: #653BB7;
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.header-pay, .header-income {
+  width: 40%;
+  border: 2rpx solid #ffffff;
+  padding: 20rpx 0;
+  background-color: #ffffff;
+  color: #653BB7;
+}
+.header-select {
+  background-color: #653BB7;
+  color: #ffffff;
+}
+
+/* 主体 */
+.content {
+  flex-wrap: wrap;
+  padding-top: 150rpx;
+  padding-bottom: 700rpx;
+}
+.content-item {
+  width: 25%;
+}

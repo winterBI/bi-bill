@@ -1,18 +1,21 @@
 // app.ts
-App<IAppOption>({
-  globalData: {},
-  onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+import { w_version } from "./config"
+App({
+  globalData: {
 
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      },
-    })
+  },
+  onLaunch() {
+      // 设置版本号
+    wx.setStorageSync('w_version', w_version)
+  },
+
+  /**
+   * 获取元素上绑定的属性
+   * @param e 事件回调
+   * @param setKey 获取的key
+   * @return 属性值
+   */
+  getDataSet: (e: WechatMiniprogram.BaseEvent, setKey: string): any => {
+    return e.currentTarget.dataset[setKey]
   },
 })

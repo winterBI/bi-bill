@@ -1,0 +1,81 @@
+/* 关键词 */
+.kb-keyword {
+  padding: 20rpx;
+ font-size: 30rpx;
+ overflow-x: scroll;
+ overflow-y: hidden;
+ white-space: nowrap;
+}
+.keyword-item {
+  padding: 10rpx 14rpx;
+  background: #eee;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+}
+
+/* 备注 */
+.kb-tip {
+  height: 100rpx;
+  border-top: 1px solid #dddddd;
+}
+.kb-remark {
+  padding:0 15rpx;
+  font-size: 30rpx;
+}
+.kb-amount {
+  padding:0 15rpx;
+  font-size: 40rpx;
+}
+.kb-input {
+  height: 100%;
+  flex: 1;
+  /* background: red; */
+}
+.kb-input-placeholder {
+  font-size: 28rpx;
+  padding-left: 10rpx;
+}
+/* 主体 */
+.kb-wrapper {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #FAFAFA;
+}
+.kb-content {
+  width: 100%;
+  flex-wrap: wrap;
+}
+.kb-item {
+  width: calc(25% - 1px);
+  height: 120rpx;
+  border-top: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+}
+.kb-no-right-border {
+  border-right: none;
+  width: 25%;
+}
+.kb-complete {
+  border-top: 1px solid #653BB7;
+  background: #653BB7;
+  color: #ffffff;
+}
+.kb-complete-right-border {
+  border-right: 1px solid #653BB7;
+}
+.kb-del {
+  width: 80rpx;
+  height: 80rpx;
+}
+.kb-hover {
+  background: rgba(101, 59, 183, 0.10);
+}
+.kb-hover-complete {
+  background: rgba(101, 59, 183, 0.90);
+}
+.kb-item-item {
+  width: 100%;
+  height: 100%;
+}

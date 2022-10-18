@@ -1,0 +1,28 @@
+<!--pages/billDetail/billDetail.wxml-->
+<view>
+  <view class="header flex-column flex-center">
+    <view class="header-img-wrapper flex-center">
+      <image class="header-img" src="{{detailData.category.select_icon}}"></image>
+    </view>
+    <view>{{detailData.description}}</view>
+  </view>
+  <view>
+    <view class="data-item-wrapper border-buttom-eee flex-center-start">
+      <text class="data-title title-color">类型</text>
+      <text class="data-content">{{detailData.type == 1 ? "支出" : "收入"}}</text>
+    </view>
+    <view class="data-item-wrapper border-buttom-eee flex-center-start">
+      <text class="data-title title-color">金额</text>
+      <text class="data-content">{{detailData.amount}}</text>
+    </view>
+    <view class="data-item-wrapper border-buttom-eee flex-center-start">
+      <text class="data-title title-color">日期</text>
+      <text class="data-content">{{detailData.date}}</text>
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="buttom-wrapper flex-center">
+    <view class="buttom-edit flex-1 flex-center" bindtap="edit">编辑</view>
+    <view class="flex-1 flex-center" bindtap="del">删除</view>
+  </view>
+</view>

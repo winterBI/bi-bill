@@ -1,0 +1,68 @@
+<!--pages/my/my.wxml-->
+<view>
+    <view class="header">
+        <view wx:if="{{userInfo}}" class="header-logo flex-center flex-column">
+            <view class="avatar-wrapper flex-center">
+                <image class="avatar" src="{{userInfo.avatar}}"></image>
+            </view>
+            <view class="nickname flex-center">{{userInfo.nickname}}</view>
+        </view>
+        <view class="no-login flex-center" wx:else bindtap="logout">您还没有登录，点击去登录</view>
+    </view>
+    <!-- 相关信息 -->
+    <view class="empty-line"></view>
+
+    <view class="my-wrapper">
+
+        <view wx:if="{{config.qq_group}}" class="my-Item flex-between border-buttom-eee">
+            <view class="title-color">QQ交流群</view>
+            <view class="my-item-value">
+                {{config.qq_group}}
+            </view>
+        </view>
+
+        <view class="my-Item flex-between border-buttom-eee">
+            <view class="title-color">总共记录</view>
+            <view class="my-item-value">{{billCount || '0'}}笔</view>
+        </view>
+
+        <view class="my-Item flex-between border-buttom-eee">
+            <view class="title-color">版本号</view>
+            <view class="my-item-value">{{version}}</view>
+        </view>
+
+        <view wx:if="{{config.author_msg}}" class="my-Item flex-between border-buttom-eee">
+            <view class="title-color">作者留言</view>
+            <view class="my-item-value">{{config.author_msg}}</view>
+        </view>
+
+        <!-- 开源地址 -->
+        <view wx:if="{{config.open_source}}" class="my-Item flex-between border-buttom-eee">
+            <view class="title-color">开源地址</view>
+            <view class="my-item-value">{{config.open_source}}</view>
+        </view>
+
+        <view class="my-Item flex-between border-buttom-eee" bindtap="goSuggest">
+            <view class="title-color">问题反馈</view>
+            <view class="my-item-value">
+                <image class="my-right" src="../../images/right.png"></image>
+            </view>
+        </view>
+
+        <view class="my-Item flex-between border-buttom-eee" bindtap="goLogo">
+            <view class="title-color">更新日志</view>
+            <view class="my-item-value">
+                <image class="my-right" src="../../images/right.png"></image>
+            </view>
+        </view>
+
+        <!-- 退出登录 -->
+        <view class="my-Item flex-between border-buttom-eee" bindtap="logout">
+            <view class="title-color">退出登录</view>
+            <view class="my-item-value">
+                <image class="my-right" src="../../images/right.png"></image>
+            </view>
+        </view>
+
+    </view>
+</view>

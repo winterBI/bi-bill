@@ -1,7 +1,8 @@
 // pages/login/login.ts
 
 import Login from "./LoginBus"
-const login = new Login()
+const loginBus = new Login()
+
 Page({
 
     /**
@@ -18,5 +19,25 @@ Page({
 
     },
 
-    
+    // 登录获取用户名和头像
+    login() {
+        wx.getUserProfile({
+            desc: "获取用户信息",
+            success: (res) => {
+                wx.showLoading({
+                    title: '正在登录...',
+                    mask: true
+                })
+                // 获取token数据
+                loginBus.login(res.userInfo)
+            },
+            fail: (res) => {
+                console.log(res)
+                wx.showToast({
+                  title: '登录失败,重新登录',
+                  icon: "error"
+                })
+              }
+        })
+    }
 })

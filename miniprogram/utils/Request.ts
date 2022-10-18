@@ -2,10 +2,16 @@
 // 配置文件
 import { baseApi } from '../config'
 
-//请求方法
+// 请求方法
 enum Method {
     "GET" = "GET",
     "POST" = "POST"
+}
+
+// 错误状态码
+enum HttpCode {
+    requestErr = 404,
+    tokenExpired = 401
 }
 
 // 网络请求数据格式
@@ -22,13 +28,10 @@ interface RequestReject {
 
 // 基础的网络请求
 class Request {
-    private baseApi = ""
+
+    // 全地址
     public fullUrl = ""
-    private token = ""
-    constructor() {
-        this.baseApi = baseApi // http://bill.cc/api/v1/
-        this.token = wx.getStorageSync('token')
-    }
+
     /**
      * 通用的网络请求
      * @param url 请求地址
@@ -39,7 +42,7 @@ class Request {
      */
     private commonRequest(url: string, method: Method = Method.GET, data: Data = {}, checkToken = true): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.fullUrl = this.baseApi + url
+            this.fullUrl = baseApi + url
             let err: RequestReject = {
                 url: '',
                 method: '',
@@ -50,21 +53,37 @@ class Request {
                 method: method,
                 data,
                 header: {
-                    token: checkToken ? this.hasToken : '',
+                    token: checkToken ? this.getToken() : '',
                     "content-type": "application/json",
                 },
                 // 注意：正常请求404也会走success 
                 success: (res) => {
                     const data = res.data
-                    if (res.statusCode !== 404) {
+                    if (res.statusCode !== HttpCode.requestErr) {
                         // token无效或者过期
-                        if (res.statusCode !== 401 && !checkToken) {
+                        if (res.statusCode === HttpCode.tokenExpired && checkToken) {
                             // 直接去登录
-                            wx.navigateTo({
-                                url: '/pages/login/login'
+                            // wx.navigateTo({
+                            //     url: '/pages/login/login'
+                            // })
+                            wx.showModal({
+                                title: "您还没登录，立即去登录？",
+                                confirmText: "去登录",
+                                confirmColor: "#653BB7",
+                                success: (res) => {
+                                    if (res.confirm) {
+                                        wx.navigateTo({
+                                            url: '/pages/login/login'
+                                        })
+                                    } else if (res.cancel) {
+                                        console.log('用户点击取消')
+                                    }
+                                }
                             })
+                        } else {
+                            resolve(data)
                         }
-                        resolve(data)
+                        
                     } else {
                         wx.showToast({
                             title: '请求错误，去反馈或者请稍后重试~',
@@ -130,6 +149,9 @@ class Request {
                     } else {
                         reject('[wx.login] res.code is undefined')
                     }
+                },
+                fail() {
+                    reject('[wx.login] fail')
                 }
             })
         })
@@ -143,27 +165,33 @@ class Request {
         if (!code) {
             return ''
         }
-        const data = await this.post(url, { code }, false)
-        if ('token' in data) {
-            return data.token
+        try {
+            const data = await this.post(url, { code }, false)
+            if ('token' in data) {
+                return data.token
+            }
+            return ''
+        } catch (error) {
+            return ''
         }
-        return ''
     }
 
     /**
     * 保存token到本地
     * @return Promise<void> 对象
     */
-    async saveToken(): Promise<void> {
+    async saveToken(): Promise<string> {
         try {
             const code = await this.getCodeWx()
             const token = await this.getTokenByCode('token/user', code)
             if (token) {
-                this.token = token
                 wx.setStorageSync('token', token)
+                return token
             }
+            return ''
         } catch (err) {
             console.log(err)
+            return ''
         }
     }
 
@@ -172,16 +200,12 @@ class Request {
      * @return Promise<boolean> 对象 
      */
     async checkTokenOnServer(): Promise<boolean> {
-        const data: { ok: boolean } = await this.post('token/check', { token: this.token }, false)
-        return !!data.ok
-    }
-
-    /**
-     * 是否有token
-     * @return boolean
-     */
-    private hasToken(): boolean {
-        return !!this.token
+        try {
+            const data: { ok: boolean } = await this.post('token/check', { token: this.getToken() }, false)
+            return !!data.ok
+        } catch (error) {
+            return false
+        }
     }
 
     /**
@@ -190,7 +214,6 @@ class Request {
      */
     public getToken(): string {
         const token = wx.getStorageSync('token')
-        this.token = token
         return token
     }
 }

@@ -1,0 +1,18 @@
+<!--pages/add/add.wxml-->
+<import src="../tpls/add-tpl/add-tpl.wxml"></import>
+<import src="../tpls/keyboard/keyboard-tpl.wxml"></import>
+<view>
+  <view class="header flex-center">
+    <view data-type="1" class="header-pay flex-center {{type == 2 ? 'header-select': ''}}" bindtap="changeTab">支出</view>
+    <view data-type="2" class="header-income flex-center {{type == 1 ? 'header-select': ''}}" bindtap="changeTab">收入</view>
+  </view>
+  <view class="content flex" style="transform: translateY({{translateY}}px);">
+    <block wx:for="{{categoryList}}" wx:key="index">
+      <view data-item="{{item}}" class="content-item flex-center" bindtap="tapItem">
+        <template is="addItem" data="{{item,currentItem}}"></template>
+      </view>
+    </block>
+  </view>
+  <!-- 自定义键盘 -->
+  <template wx:if="{{currentItem.id}}" is="keyboard" data="{{kbAmount,kbSumOrSubmit, kbRemark,dateSelect, keywordList}}"></template>
+</view>
