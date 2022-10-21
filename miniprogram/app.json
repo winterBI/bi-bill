@@ -9,17 +9,24 @@
         "pages/billDetail/billDetail",
         "pages/suggest/suggest",
         "pages/suggestList/suggestList",
-        "pages/log/log"
+        "pages/log/log",
+        "pages/chart/chart"
     ],
+    "lazyCodeLoading": "requiredComponents",
     "entryPagePath": "pages/home/home",
     "tabBar": {
         "selectedColor": "#653BB7",
-        "list": [
-            {
+        "list": [{
                 "pagePath": "pages/home/home",
                 "text": "明细",
                 "iconPath": "./images/tabs/detail.png",
                 "selectedIconPath": "./images/tabs/detail@select.png"
+            },
+            {
+                "pagePath": "pages/chart/chart",
+                "text": "图表",
+                "iconPath": "./images/tabs/chart.png",
+                "selectedIconPath": "./images/tabs/chart@select.png"
             },
             {
                 "pagePath": "pages/bill/bill",

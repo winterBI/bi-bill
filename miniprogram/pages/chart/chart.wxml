@@ -1,0 +1,58 @@
+<!--pages/chart/chart.wxml-->
+<view class="wrapper flex flex-column">
+  <!-- 头部部分 -->
+  <view class="header">
+    <view class="header-top flex-center flex-between">
+      <view class="top-left">
+        <view class="flex-center select-date">
+          <image class="date-img" src="../../images/select_date.png" alt="" />
+          <picker mode="date" fields="month" bindchange="selectDate">
+            <text wx:if="{{dateType === 1}}" class="date-text">{{year}}年</text>
+            <text wx:else class="date-text">{{year}}年{{month}}月</text>
+          </picker>
+        </view>
+        <view class="data-type flex-center" bindtap="changeDateType">
+            <text>{{dateType == 1 ? '年统计' : '月统计'}}</text>
+        <image class="date-type-img" src="../../images/circle.png" alt="" />
+        </view>
+
+      </view>
+      <view class="top-right flex">
+        <view class="right-ex right-item {{type == 1 ? 'select' : 'no-select'}}" data-type="1" bindtap="changeType">支出</view>
+        <view class="right-in right-item {{type == 2 ? 'select' : 'no-select'}}" data-type="2" bindtap="changeType">收入</view>
+      </view>
+    </view>
+    <view class="header-bottom">
+      <text class="title-color">{{type == 1 ? '共支出' : '共收入'}}</text>
+      <view class="header-amount">
+        ￥{{totalAmount}}
+      </view>
+    </view>
+  </view>
+  <!-- 图表 -->
+  <view class="chart-wrapper">
+    <text class="chart-title">{{type == 1 ? '支出构成' : '收入构成'}}</text>
+    <view class="pie-canvas">
+      <ec-canvas type="2d" id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+
+  <!-- 消费排行 -->
+  <view wx:if="{{ s_data.length > 0 }}" class="progress-box flex-column flex-center">
+    <block wx:for="{{s_data}}" wx:key="item">
+      <view data-key="{{}}" class="progress-wrapper flex-between">
+        <view class="progress-info flex-center-start">
+          <image class="progress-img" src="{{item.category.select_icon}}"></image>
+          <text>{{item.category.name}}</text>
+        </view>
+        <progress class="progress-content" duration="10" border-radius="5" percent="{{ index ===0 ? 100 : item.amount / s_data[0].amount * 100}}" activeColor="#653BB7" active stroke-width="10" />
+        <text class="progress-amount">￥{{item.amount}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="no-data" wx:else>
+      暂时没有数据~
+    </view>
+
+
+</view>

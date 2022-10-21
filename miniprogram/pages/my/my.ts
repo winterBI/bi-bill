@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        isLogin: wx.getStorageSync('token'),
         userInfo: {},
         version: "",
         config: {},
@@ -18,11 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-        this.setData({
-            version: wx.getStorageSync('w_version'),
-            userInfo: wx.getStorageSync('userInfo'),
-            config: wx.getStorageSync('config'),
-        })
+
     },
 
     /**
@@ -30,12 +27,30 @@ Page({
      */
     onShow() {
         this._loadData()
+        if(Object.keys(this.data.userInfo).length === 0) {
+            this.setData({
+                version: wx.getStorageSync('w_version'),
+                userInfo: wx.getStorageSync('userInfo'),
+                config: wx.getStorageSync('config'),
+            })
+        }
     },
 
     // 加载数据
     async _loadData() {
-        this.setData({
-            billCount: await my.getCount(),
+
+        if (!this.data.isLogin) {
+            this.setData({
+                isLogin: wx.getStorageSync('token'),
+            })
+            return
+        }
+        my.getCount().then((data) => {
+            this.setData({
+                billCount: data
+            })
+        }).catch(() => {
+
         })
     },
 
@@ -55,7 +70,8 @@ Page({
 
     // 退出登录
     logout() {
-        wx.clearStorageSync()
+        wx.setStorageSync('token', '')
+        wx.setStorageSync('userInfo', '')
         wx.navigateTo({
             url: '/pages/login/login'
         })

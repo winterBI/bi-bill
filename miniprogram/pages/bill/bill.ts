@@ -43,16 +43,20 @@ Page({
      * @param year 
      */
     async _loadData(year: Year) {
+        wx.showLoading({
+            title: '正在获取数据，请稍后...'
+        })
         bill.getBillList(year).then(data => {
             this.setData({
                 billData: data
             })
         }).catch(() => {
-            wx.showToast({
-                title: '获取账单列表失败',
-                icon: 'none'
-            })
+            // wx.showToast({
+            //     title: '获取账单列表失败',
+            //     icon: 'none'
+            // })
         }).finally(() => {
+            wx.hideLoading()
             wx.stopPullDownRefresh()
             wx.setStorageSync('billRefresh', false)
         })

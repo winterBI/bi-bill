@@ -40,7 +40,7 @@ class Request {
      * @param checkToken 是否验证token，默认true
      * @return Promise 对象
      */
-    private commonRequest(url: string, method: Method = Method.GET, data: Data = {}, checkToken = true): Promise<any> {
+    private commonRequest(url: string, method: Method = Method.GET, data: Data = {}, checkToken = true, showLogin = true): Promise<any> {
         return new Promise((resolve, reject) => {
             this.fullUrl = baseApi + url
             let err: RequestReject = {
@@ -53,6 +53,7 @@ class Request {
                 method: method,
                 data,
                 header: {
+                    w_version: wx.getStorageSync('w_version'),
                     token: checkToken ? this.getToken() : '',
                     "content-type": "application/json",
                 },
@@ -66,20 +67,23 @@ class Request {
                             // wx.navigateTo({
                             //     url: '/pages/login/login'
                             // })
-                            wx.showModal({
-                                title: "您还没登录，立即去登录？",
-                                confirmText: "去登录",
-                                confirmColor: "#653BB7",
-                                success: (res) => {
-                                    if (res.confirm) {
-                                        wx.navigateTo({
-                                            url: '/pages/login/login'
-                                        })
-                                    } else if (res.cancel) {
-                                        console.log('用户点击取消')
+                            if(showLogin) {
+                                wx.showModal({
+                                    title: "您还没登录，立即去登录？",
+                                    confirmText: "去登录",
+                                    confirmColor: "#653BB7",
+                                    success: (res) => {
+                                        if (res.confirm) {
+                                            wx.navigateTo({
+                                                url: '/pages/login/login'
+                                            })
+                                        } else if (res.cancel) {
+                                            console.log('用户点击取消')
+                                        }
                                     }
-                                }
-                            })
+                                })
+                            }
+                            reject(data)
                         } else {
                             resolve(data)
                         }
@@ -120,8 +124,8 @@ class Request {
      * @param checkToken 是否验证token，默认true
      * @return Promise<any> 对象
      */
-    public get(url: string, checkToken = true): Promise<any> {
-        return this.commonRequest(url, Method.GET, {}, checkToken)
+    public get(url: string, checkToken = true, showLogin = true): Promise<any> {
+        return this.commonRequest(url, Method.GET, {}, checkToken, showLogin)
     }
 
     /**
@@ -131,8 +135,8 @@ class Request {
      * @param checkToken 是否验证token，默认true
      * @return Promise<any> 对象
      */
-    public post(url: string, data: Data = {}, checkToken = true): Promise<any> {
-        return this.commonRequest(url, Method.POST, data, checkToken)
+    public post(url: string, data: Data = {}, checkToken = true, showLogin = true): Promise<any> {
+        return this.commonRequest(url, Method.POST, data, checkToken, showLogin)
     }
 
     /**

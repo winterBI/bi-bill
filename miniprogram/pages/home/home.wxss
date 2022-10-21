@@ -56,8 +56,8 @@
     padding-right: 20rpx
 }
 
-.data-total-income {
-    padding-right: 60rpx;
+.data-total-pay {
+    padding-left: 60rpx;
 }
 
 .data-item {

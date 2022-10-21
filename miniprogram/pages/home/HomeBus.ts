@@ -35,13 +35,18 @@ class Home extends Request {
         }
     }
 
+    /**
+     * 获取通知信息
+     */
+    getNoticeDate() {
+        return this.get('notice/get')
+    }
+
     // 获取账单数据
     async getBillList(): Promise<BillData> {
         try {
             return await this.post('bill/get', { year: this.year, month: this.month })
-        } catch (err) {
-            return this.errList
-        } finally {
+        }finally {
             wx.stopPullDownRefresh()
         }
     }

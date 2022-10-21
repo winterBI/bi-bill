@@ -43,6 +43,7 @@ export interface DateParam {
     month: Month;
 }
 
+// 查看订单的参数
 export interface DetailParam extends BillItem {
     date: string,
     year: Year,
@@ -50,3 +51,17 @@ export interface DetailParam extends BillItem {
     day: number,
     week: string
 }
+
+// 通知
+export interface Notice{
+    id: number;
+    title: string;
+    content: string;
+    start_time: null | number;
+    expired_tme: null | number;
+    continued_time: number;
+    type: number;
+    status: number;
+  }
+  
+  

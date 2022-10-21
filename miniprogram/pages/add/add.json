@@ -1,5 +1,7 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        
+    },
     "navigationBarTitleText": "添加/编辑账单",
     "navigationBarBackgroundColor": "#653BB7",
     "navigationBarTextStyle": "white",

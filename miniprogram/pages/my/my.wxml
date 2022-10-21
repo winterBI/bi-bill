@@ -1,7 +1,7 @@
 <!--pages/my/my.wxml-->
 <view>
     <view class="header">
-        <view wx:if="{{userInfo}}" class="header-logo flex-center flex-column">
+        <view wx:if="{{isLogin}}" class="header-logo flex-center flex-column">
             <view class="avatar-wrapper flex-center">
                 <image class="avatar" src="{{userInfo.avatar}}"></image>
             </view>
@@ -42,14 +42,14 @@
             <view class="my-item-value">{{config.open_source}}</view>
         </view>
 
-        <view class="my-Item flex-between border-buttom-eee" bindtap="goSuggest">
+        <view wx:if="{{isLogin}}" class="my-Item flex-between border-buttom-eee" bindtap="goSuggest">
             <view class="title-color">问题反馈</view>
             <view class="my-item-value">
                 <image class="my-right" src="../../images/right.png"></image>
             </view>
         </view>
 
-        <view class="my-Item flex-between border-buttom-eee" bindtap="goLogo">
+        <view wx:if="{{isLogin}}" class="my-Item flex-between border-buttom-eee" bindtap="goLogo">
             <view class="title-color">更新日志</view>
             <view class="my-item-value">
                 <image class="my-right" src="../../images/right.png"></image>
@@ -58,7 +58,7 @@
 
         <!-- 退出登录 -->
         <view class="my-Item flex-between border-buttom-eee" bindtap="logout">
-            <view class="title-color">退出登录</view>
+            <view class="title-color">{{ isLogin ? '退出登录' : '去登录'}}</view>
             <view class="my-item-value">
                 <image class="my-right" src="../../images/right.png"></image>
             </view>

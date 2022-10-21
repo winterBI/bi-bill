@@ -6,7 +6,7 @@ class My extends Request {
      * 获取记录的笔数
      */
     getCount() {
-        return this.get('bill/count')
+        return this.get('bill/count', true, false)
     }
 
     /**

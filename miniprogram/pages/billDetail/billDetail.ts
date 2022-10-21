@@ -51,6 +51,7 @@ Page({
             })
             wx.setStorageSync('homeRefresh', true)
             wx.setStorageSync('billRefresh', true)
+            wx.setStorageSync('chartRefresh', true)
             setTimeout(() => {
                 wx.navigateBack()
             }, 500);

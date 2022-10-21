@@ -42,6 +42,9 @@ Page({
             })
             // 需要修改数据
             this.checkEdit(param)
+
+            // 加载关键词
+            this.getKeywordList()
         }
         this._loadData(this.data.type)
 
@@ -87,14 +90,23 @@ Page({
     },
 
     /**
+     * 获取关键词
+     */
+    getKeywordList() {
+        keybord.getKeywordList().then((data) => {
+            this.setData({
+                keywordList: data
+            })
+        }).catch(() => {})
+    },
+
+    /**
      * 点击分类
      */
-    async tapItem(e: WechatMiniprogram.BaseEvent) {
+    tapItem(e: WechatMiniprogram.BaseEvent) {
         // 没有关键词的时候加载
         if (this.data.keywordList.length === 0) {
-            this.setData({
-                keywordList: await keybord.getKeywordList()
-            })
+            this.getKeywordList()
         }
         const currentItem = getApp().getDataSet(e, 'item')
         this.setData({
@@ -127,6 +139,13 @@ Page({
     },
 
     /**
+     * 长按删除关键词
+     */
+    // delKeyword(e: WechatMiniprogram.BaseEvent) {
+
+    // },
+
+    /**
      *  点击键盘的按键
      */
     keyboardTap(e: WechatMiniprogram.BaseEvent) {
@@ -136,7 +155,9 @@ Page({
         keybord.tap(key, this.updateKeybord, this.submitBill)
     },
 
-
+    /**
+     * 提交订单
+     */
     submitBill() {
         if (!this.data.kbAmount || /^(0|\+|-)$/.test(this.data.kbAmount) && this.data.kbSumOrSubmit) {
             wx.showToast({

@@ -100,6 +100,7 @@ class Keybord extends Request {
             }
             wx.setStorageSync('homeRefresh', true)
             wx.setStorageSync('billRefresh', true)
+            wx.setStorageSync('chartRefresh', true)
         }).catch(() => {
             wx.showToast({
                 title: '创建失败!',

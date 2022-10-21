@@ -1,30 +1,30 @@
 {
-  "compilerOptions": {
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "module": "CommonJS",
-    "target": "ES2020",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "alwaysStrict": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strict": true,
-    "strictPropertyInitialization": true,
-    "lib": ["ES2020"],
-    "typeRoots": [
-      "./typings"
+    "compilerOptions": {
+      "strictNullChecks": true,
+      "noImplicitAny": true,
+      "module": "CommonJS",
+      "target": "ES2020",
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "noImplicitThis": true,
+      "noImplicitReturns": true,
+      "alwaysStrict": true,
+      "noFallthroughCasesInSwitch": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "strict": true,
+      "strictPropertyInitialization": true,
+      "lib": ["ES2020"],
+      "typeRoots": [
+        "./typings"
+      ]
+    },
+    "include": [
+      "./**/*.ts"
+  , "miniprogram/pages/chart/chart.js"  ],
+    "exclude": [
+      "node_modules"
     ]
-  },
-  "include": [
-    "./**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
-}
+  }  

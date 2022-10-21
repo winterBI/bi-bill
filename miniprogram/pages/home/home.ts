@@ -1,7 +1,7 @@
 // pages/home/home.ts
 
 import Home from './HomeBus'
-import { BillData, BillItem, BillList } from './HomeInterface'
+import { BillData, BillItem, BillList, Notice } from './HomeInterface'
 const home = new Home()
 
 Page({
@@ -23,6 +23,57 @@ Page({
      */
     async onLoad() {
         this._loadData()
+    },
+    /**
+     * 生命周期函数--监听页面加载完成
+     */
+    onReady() {
+        if(wx.getStorageSync('token')) {
+            this.getNotice()
+        }
+        this.checkUpdate()
+    },
+
+    // 检查是否需要更新
+    checkUpdate() {
+        const local_version: string = wx.getStorageSync('w_version')
+        const config_version: {[key: string]: any} = wx.getStorageSync('config')
+        if(local_version && config_version && config_version.version && config_version.version === local_version) {
+            // 不需要更新
+
+        } else {
+            getApp().getUpload()
+        }
+    },
+
+    // 检查是否有通知信息
+    async getNotice() {
+        // 校验是否需要通知
+        const showNotice = wx.getStorageSync('show_notice')
+        const nowTime = (new Date()).getTime()
+        if(showNotice && showNotice.end_time > nowTime) {
+            return
+        }
+        const noticeArr: Notice[] = await home.getNoticeDate()
+        if(noticeArr.length > 0) {
+            // 取第一个进行通知
+            const firstItem = noticeArr[0]
+            wx.showModal({
+                title: firstItem.title,
+                content: firstItem.content,
+                showCancel: false,
+                confirmText: '我知道了',
+                confirmColor: '#653BB7',
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.setStorageSync('show_notice', {
+                        continued_time: firstItem.continued_time,
+                        end_time: nowTime + firstItem.continued_time * 60 * 60 * 1000
+                    })
+                  }
+                }
+              })
+        }
     },
 
     /**
@@ -68,6 +119,9 @@ Page({
      * @param month 传入月份
      */
     async _loadData(): Promise<void> {
+        wx.showLoading({
+            title: '正在获取数据，请稍后...'
+        })
         home.getBillList().then(data => {
             this.setData({
                 billData: data
@@ -78,7 +132,7 @@ Page({
                 icon: 'none'
             })
         }).finally(() => {
-            wx.stopPullDownRefresh()
+            wx.hideLoading()
             wx.setStorageSync('homeRefresh', false)
         })
     },

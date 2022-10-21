@@ -46,6 +46,8 @@
 .kb-content {
   width: 100%;
   flex-wrap: wrap;
+  font-weight: 600;
+  font-size: 30rpx;
 }
 .kb-item {
   width: calc(25% - 1px);

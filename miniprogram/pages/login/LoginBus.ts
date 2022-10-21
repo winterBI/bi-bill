@@ -1,6 +1,6 @@
 
 import Request from "../../utils/Request"
-
+import { w_version } from "../../config"
 interface updateInfo {
     id: number,
     nickname: string,
@@ -20,10 +20,11 @@ class Login extends Request {
             nickname: nickName, avatar: avatarUrl
         }
         this.saveToken().then((token) => {
-            if(token) {
-                this.post('user/update', params).then((data: updateInfo)=> {
+            if (token) {
+                this.post('user/update', params).then((data: updateInfo) => {
                     wx.setStorageSync('userInfo', data)
-                    if(data.id) {
+                    this.setInfo()
+                    if (data.id) {
                         wx.switchTab({
                             url: '/pages/home/home',
                         })
@@ -35,6 +36,17 @@ class Login extends Request {
         }).finally(() => {
             wx.hideLoading()
         })
+    }
+
+    /**
+     * 设置相关的信息
+     */
+    setInfo() {
+        // 设置版本号
+        wx.setStorageSync('w_version', w_version)
+        wx.setStorageSync('homeRefresh', true)
+        wx.setStorageSync('billRefresh', true)
+        wx.setStorageSync('chartRefresh', true)
     }
 
 }
