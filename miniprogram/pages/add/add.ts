@@ -170,7 +170,7 @@ Page({
         // 格式化时间
         const dateResult = keybord.formatDate(this.data.date)
         const params: SubmitParams = {
-            description: this.data.kbRemark,
+            description: this.data.kbRemark || this.data.currentItem.name as string,
             category_id: this.data.currentItem.id,
             type: this.data.currentItem.type,
             amount: parseInt((parseFloat(this.data.kbAmount) * 100).toString()) / 100,
