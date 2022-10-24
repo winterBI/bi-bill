@@ -1,11 +1,10 @@
 # 微信小程序搜索 【白白账本】
 
 > 更新时间: 2022-10-24
-<br />
-> 使用技术栈：TypeScript、wxml、wxss、echarts
 
 # 前言
 ## 白白账本  
+> 使用技术栈：TypeScript、wxml、wxss、echarts
 > 是一款非常简单的微信小程序记账工具。做小程序记账的目的方便自己清楚金钱的来源和去处，欢迎Star和Fork。如有问题希望各位开发者给予Issues。  
 
 
