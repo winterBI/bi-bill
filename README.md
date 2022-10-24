@@ -12,26 +12,15 @@
 
 # 小程序截图
 ## 主要界面
-<img src="https://bill.bigb.cc/public/images/github/home-2.jpg" style="width:300px;display:inline-block;" alt="白白账本-首页" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/home-1.jpg" style="width:300px;" alt="白白账本-首页" title="白白账本">
+<img src="https://bill.bigb.cc/public/images/github/home.png" style="width:300px;" alt="白白账本-首页" title="白白账本">
 
-<img src="https://bill.bigb.cc/public/images/github/chart-2.jpg" style="width:300px;" alt="白白账本-图表" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/chart-1.jpg" style="width:300px;" alt="白白账本-图表" title="白白账本">
+<img src="https://bill.bigb.cc/public/images/github/chart.png" style="width:300px;" alt="白白账本-图表" title="白白账本">
 
-<img src="https://bill.bigb.cc/public/images/github/bill-2.jpg" style="width:300px;" alt="白白账本-账单" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/bill-1.jpg" style="width:300px;" alt="白白账本-账单" title="白白账本">
+<img src="https://bill.bigb.cc/public/images/github/bill.png" style="width:300px;" alt="白白账本-账单" title="白白账本">
 
-<img src="https://bill.bigb.cc/public/images/github/my-2.jpg" style="width:300px;" alt="白白账本-我的" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/my-1.jpg" style="width:300px;" alt="白白账本-我的" title="白白账本">
-
+<img src="https://bill.bigb.cc/public/images/github/my.png" style="width:300px;" alt="白白账本-我的" title="白白账本">
 ## 添加账单
-<img src="https://bill.bigb.cc/public/images/github/add-1.jpg" style="width:300px;" alt="白白账本-添加账单" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/add-2.jpg" style="width:300px;" alt="白白账本-添加账单" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/add-3.jpg" style="width:300px;" alt="白白账本-添加账单" title="白白账本">
-
-## 其他
-<img src="https://bill.bigb.cc/public/images/github/login-1.jpg" style="width:300px;" alt="白白账本-登录" title="白白账本">
-<img src="https://bill.bigb.cc/public/images/github/suggest-1.jpg" style="width:300px;" alt="白白账本-建议" title="白白账本">
+<img src="https://bill.bigb.cc/public/images/github/add.png" style="width:450px;" alt="白白账本-添加账单" title="白白账本">
 
 # 后记
 > 界面相对简单，欢迎大家使用。
