@@ -12,7 +12,7 @@
 
 # 小程序截图
 ## 主要界面
-<img src="https://bill.bigb.cc/public/images/github/home-2.jpg" style="width:300px;" alt="白白账本-首页" title="白白账本">
+<img src="https://bill.bigb.cc/public/images/github/home-2.jpg" style="width:300px;display:inline-block;" alt="白白账本-首页" title="白白账本">
 <img src="https://bill.bigb.cc/public/images/github/home-1.jpg" style="width:300px;" alt="白白账本-首页" title="白白账本">
 
 <img src="https://bill.bigb.cc/public/images/github/chart-2.jpg" style="width:300px;" alt="白白账本-图表" title="白白账本">
